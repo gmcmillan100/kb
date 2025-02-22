@@ -15,7 +15,7 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://gmcmillan100.github.io/kb/',
+  url: 'https://gmcmillan100.github.io/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -23,7 +23,7 @@ const config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'gmcmillan100', // Usually your GitHub org/user name.
-  projectName: 'kb', // Usually your repo name.
+  projectName: '', // Usually your repo name.
   trailingSlash: 'false', // GitHub Pages adds a trailing slash to Docusaurus URLs by default.
 
   onBrokenLinks: 'throw',
