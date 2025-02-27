@@ -114,7 +114,7 @@ In this example, the "test.rnc" file contains this:
 ```
 
 Note: The file kept reporting errors for the longest time because I had
-an extra "," at the end of the line "element email-address { text }".
+an extra ``,`` at the end of the line ``element email-address { text }``.
 
 
 Face Customizations
