@@ -1,7 +1,5 @@
 ---
-layout: page
-title: tr
-permalink: /tr/
+sidebar_position: 6
 ---
 Use `tr` to delete characters in a file.
 
