@@ -15,7 +15,6 @@ resource:
 * [Diversity](#diversity)
 * [Gender Identity](#gender-identity)
 * [Sexual Harassment](#sexual-harassment)
-* [Glint manager review questions](glint-manager-review-questions)
 
 Unconscious bias, https://www.linkedin.com/learning/unconscious-bias/why-unconscious-bias-matters-to-business?contextUrn=urn%3Ali%3AlyndaLearningPath%3A5db07b91498e92fd7131b56b&u=104
 
