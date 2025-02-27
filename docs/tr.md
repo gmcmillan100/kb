@@ -2,7 +2,6 @@
 layout: page
 title: tr
 permalink: /tr/
-resource: true
 ---
 Use `tr` to delete characters in a file.
 
