@@ -1,7 +1,9 @@
 ---
-sidebar_position: 4
+sidebar_position: 2
 ---
-# Copy File To Remote
+# SCP
+
+## Copy File To Remote
 
 To copy local file "rsync-3.0.2.tar.gz" to a remote host at "192.168.1.101" via user "greg". Don't forget the ":"
 
@@ -29,7 +31,7 @@ webworks.txt         100% |*****************************************************
 bsd1 /home/backup/fdry-files> 
 ```
 
-# Copy Files from Remote to Local
+## Copy Files from Remote to Local
 
 scp 1 file:
 
@@ -70,19 +72,19 @@ Password:
 address-book.txt     100% |*****************************| 82485       00:00 
 ```
 
-# Copy Using Different Port Number
+## Copy Using Different Port Number
 
 ```
 $ scp '-P 10122' spiderDocSource.zip gmc@ssh.spidercloud.com:/home/gmc
 ```
 
-# Copy Recursively 
+## Copy Recursively 
 
 ```
 $ scp -r mark@remotebox:a . 
 ```
 
-# Pattern Matching
+## Pattern Matching
 
 Pattern matching can be performed with a star '*' if you first escape it with a backslash '\':
 
@@ -106,6 +108,6 @@ Copy a number of files from a remote system to a specified directory locally:
 $ scp remotebox:\{a,b,c\} ~/my/secret/dir 
 ```
 
-# Resources
+## Resources
 
 http://www.freebsddiary.org/scp.php

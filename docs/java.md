@@ -1,21 +1,18 @@
 ---
+layout: page
+title: Java@
+permalink: /java/
+resource: true
 sidebar_position: 3
 ---
 
-* [Introduction](#introduction)
-* [Terminology](#terminology)
-* [Class with Method Example](#class-with-method-example)
-* [Hello World](#hello-world)
-* [Installation](#installation)
-* [JAVA_HOME](#java-home)
-
-# Introduction
+# Java
 
 Java is a class-based programming language. It is an interpreted language. It compiles to bytecode instead of machine language. Applications are portable between platforms without recompiling. Java apps are compiled to bytecode and run on a Java Virtual Machine (JVM).
 
 Main article: http://introcs.cs.princeton.edu/java/11hello/
 
-# Terminology
+## Terminology
 
 * **java**: Java's runtime is named `java`
 
@@ -70,7 +67,7 @@ Main article: http://introcs.cs.princeton.edu/java/11hello/
 	+-------------------------------------+
 	```
 
-# Class with Method Example
+## Class with Method Example
 
 A method is a reusable code block. It can be called from multiple places in an application. 
 
@@ -109,7 +106,7 @@ Do this to run the code:
 	March
 	```
 
-# Hello World
+## Hello World
 
 1. Create a Java program:
 
@@ -148,7 +145,7 @@ Do this to run the code:
 	Hello, World
 	```
 
-# Installation
+## Installation
 
 Do this:
 
@@ -182,7 +179,7 @@ OpenJDK Runtime Environment Microsoft-6841604 (build 17.0.5+8-LTS)
 OpenJDK 64-Bit Server VM Microsoft-6841604 (build 17.0.5+8-LTS, mixed mode, sharing)
 ```
 
-# JAVA_HOME
+## JAVA_HOME
 
 Many Java applications must know the location of a $JAVA_HOME directory. If not, you'll run into a JDK version mis-match problem like this:
 
@@ -245,21 +242,19 @@ OpenJDK 64-Bit Server VM (Microsoft)(build 25.282-b08, mixed mode)
 gmcmilla@gmcmilla-mn1 ~/eng-bootcamp/training-mp-gmcmilla-1912> $ 
 ```
 
-# APIs
-
-## Basics
+## APIs
 
 For methods, it's common to call them `get` when getting a variable and `set` when setting a variable.
 
 Networking library. Java has built in.
 
-## API Education
+API Education:
 
 How To Design A Good API and Why it Matters, by Joshua Bloch. See https://www.youtube.com/watch?v=aAb7hSCtvGw
 
 https://www.linkedin.com/learning/learning-java-by-example/what-is-an-api?autoplay=true&u=0
 
-# Next Learning
+## Next Learning
 
 https://www.linkedin.com/learning/java-essential-training-syntax-and-structure/welcome?u=104
 

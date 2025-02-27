@@ -11,7 +11,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'The Rabbit Hole',
-  tagline: 'Rabbits are cool',
+  tagline: 'Technical documentation for building lightweight authoring and discovery tools',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -77,7 +77,7 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'My Site',
+        title: 'Home',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
@@ -87,7 +87,7 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Docs',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {

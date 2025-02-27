@@ -1,6 +1,8 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
+
+# Grep
 
 Recursively search through the current directory tree for a string:
 
@@ -39,6 +41,8 @@ $ grep "bgp" *.txt
 1.0_pubsgoals.txt:  debug ip bgp
 cli_fs.txt:neighbor A.B.C.D ebgp-multihop
 ```
+
+## Find
 
 Find works in a similar way:
 
@@ -81,7 +85,7 @@ $ find . -type f -name \*.mdx
 ./reference/workinggroups/productivity/about.mdx
 ```
 
-Word count:
+## Word count
 
 Use `wc -l <filename>` to print the line count.
 
