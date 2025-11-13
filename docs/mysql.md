@@ -420,6 +420,8 @@ select lastmodifier, count(distinct lastmodifier) from CONTENT where lastmoddate
 In example above, the "lastmodifier" object contains a username for each page version in the wiki. But when "count(distinct lastmodifier)" is applied, only the unique usernames are counted.
 
 SQL as root
+
+```
 mysql -u root -D confluence_3_5_7 < attachmentsAndTotalFileSize
 count(``*``)        sum(filesize)
 50161   24001977213
@@ -431,6 +433,8 @@ mysql -u root -D confluence_3_5_7 -N -e 'show tables;'
 Dump all tables in one shot:
 
 for mm in `mysql -u root -D confluence_3_5_7 -N -e 'show tables;' `; do echo "============ ${mm} =========="; mysql -u root -D confluence_3_5_7 -N -e "desc ${mm};"; done
+```
+
 See Confluence's source code at:
 
 cd /export/apps/confluence/i001/confluence-3.5.7-std/confluence/
