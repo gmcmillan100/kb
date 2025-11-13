@@ -34,3 +34,26 @@ Value	Permission				Directory Listing
  6	Read, write, no execute			rw-
  7	Read, write, execute			rwx
  ```
+
+## chown
+
+To change ownership of "getall.php" to "gmcmilla":
+
+ ```
+sudo chown gmcmilla getall.php
+iwww-test.corp:gmcmilla[585] /export/apps/apache2/iwww-test/htdocs $ ls -al getall.php
+-rwxr-xr-x   1 gmcmilla webservd     668 Dec  7 01:04 getall.php*
+ ```
+
+## chgrp
+
+To change the group from "gmcmilla" to "webservd":
+
+ ```
+esv4-cms01.corp:gmcmilla[563] /export/apps/apache2/htdocs/stats $ ls -al getall.php
+-rwxr-xr-x   1 gmcmilla gmcmilla     668 Jan 10 16:47 getall.php*
+esv4-cms01.corp:gmcmilla[564] /export/apps/apache2/htdocs/stats $ sudo chgrp webservd getall.php
+Password:
+esv4-cms01.corp:gmcmilla[565] /export/apps/apache2/htdocs/stats $ ls -al getall.php
+-rwxr-xr-x   1 gmcmilla webservd     668 Jan 10 16:47 getall.php*
+ ```

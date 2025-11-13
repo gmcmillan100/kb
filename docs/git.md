@@ -17,6 +17,337 @@ resource: true
 
 The Git protocol was created by [Linus Torvalds](https://en.wikipedia.org/wiki/Linus_Torvalds). He also created the original Linux kernel.
 
+# Michael North's git workflow tutorial
+
+Mike's demo
+-----------
+https://bluejeans.com/s/Odc5EOJ2r68/
+
+Minimum viable workflow:
+
+Get a local copy of a multiproduct
+Prepare a review branch containing that change
+Make a local code change
+Create a pull request
+Get a code review
+Merge the change into the code base
+
+
+====================================
+
+I. Get a local copy of a multiproduct
+
+$ mint checkout example-w1-python-cli
+✔ example-w1-python-cli checked out to /Users/gmcmilla/github/example-w1-python-cli_trunk
+
+Go to the MP backend and get the git repo that has already been migrated to GH. I now have my local copy. 
+
+$ cd example-w1-python-cli_trunk/
+gmcmilla-mn2:example-w1-python-cli_trunk gmcmilla$
+
+We know it's an MP because it always ends with trunk
+
+
+====================================
+
+II. Prepare a review branch containing that change
+
+As a best practice, checkout a branch at the very beginning of my workflow and make my commits on that branch. This way I can always return to a clean master if needed. This approach also supports a good starting point for any new task I may need to pick up.
+
+1. Create a new branch and prefix that branch with my username. The -b creates the branch. The checkout command is context aware:
+
+$ git checkout -b gmcmilla/new-readme-md
+Switched to a new branch 'gmcmilla/new-readme-md'
+
+Include my username in the branch name. When there are many users collaborating on a code base, users can collide with identically named branches already on GH, or it can be difficult to find my own branch. A username makes a much smaller haystack of branches to search through. Use a forward slash (/) in the branch name because there are many Git UIs that will treat this as a folder.
+
+
+2. Issue git log to confirm my commit is on the new branch (HEAD -> gmcmilla/new-readme-md, master). The "HEAD" is a "you are here" indicator on the new branch and master is here with me.
+
+$ git log
+commit 2c749fd6d7279d27c324375f878ca2898272cc72 (HEAD -> gmcmilla/new-readme-md, master)
+Author: Greg McMillan <gmcmillan@linkedin.com>
+Date:   Wed Sep 2 17:51:24 2020 -0700
+
+    Add a new README.md
+
+Tip. Do this to get master back to the official clean copy (what everyone else sees):
+
+git checkout master
+git fetch
+git reset --hard origin/master
+
+
+====================================
+
+III. Make a local code change
+
+1. Add a README.md file
+
+2. Display the status of my local working environment:
+
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	README.md
+
+Nothing added to commit but untracked files present (use "git add" to track)
+
+
+It tells me I have an untracked file. As far a git knows, this file has nothing to do with my project.  
+
+
+3. Add the file to the project:
+
+$ git add README.md
+
+
+Now I have a new file that's part of the project. Before, this file was untracked:
+
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   README.md
+
+
+4. The file is saved to disk, but it's not part of my git history yet. So, introduce a new commit by making a new unit of code change.
+
+Currently, I'm on the master branch:
+
+$ git branch
+* master
+
+Create a commit:
+
+$ git commit -m "Add a new README.md"
+[master 2c749fd] Add a new README.md
+ 1 file changed, 75 insertions(+)
+ create mode 100644 README.md
+
+Run git log to display the history. At 17:51, I made a code change that's described as "Add a new README.md"
+
+$ git log
+commit 2c749fd6d7279d27c324375f878ca2898272cc72 (HEAD -> master)
+Author: Greg McMillan <gmcmillan@linkedin.com>
+Date:   Wed Sep 2 17:51:24 2020 -0700
+
+    Add a new README.md
+
+commit 7e12b0a6d089aeeea86a93b4eb9d52e295809e1d (tag: example-w1-python-cli_0.0.0, origin/master, origin/HEAD)
+Author: Prince S. Valluri <psvallur@linkedin.com>
+Date:   Thu Aug 13 18:21:25 2020 -0700
+
+    Initial commit of example-w1-python-cli
+
+
+Note that my master (HEAD -> master) is ahead of GH's master (tag: example-w1-python-cli_0.0.0, origin/master, origin/HEAD). That is, the last I saw of GH's master. I'm further ahead in history.
+
+
+
+
+
+====================================
+
+IV. Create a pull request
+
+1. Push my branch and deliver its code to a git remote:
+
+$ git push -u origin gmcmilla/new-readme-md
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 1.64 KiB | 1.64 MiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote: This repository moved. Please use the new location:
+remote:   git@linkedin.githubprivate.com:multiproduct/example-w1-python-cli.git
+remote: 
+remote: Create a pull request for 'gmcmilla/new-readme-md' on GitHub by visiting:
+remote:      https://linkedin.githubprivate.com/multiproduct/example-w1-python-cli/pull/new/gmcmilla/new-readme-md
+remote: 
+To ssh://linkedin.githubprivate.com/multiproducts/example-w1-python-cli.git
+ * [new branch]      gmcmilla/new-readme-md -> gmcmilla/new-readme-md
+Branch 'gmcmilla/new-readme-md' set up to track remote branch 'gmcmilla/new-readme-md' from 'origin'.
+
+
+The -u argument refers to tracking an upstream branch. My local branch tracks the copy that I pushed to GH. The -u frees me from having to be so specific about my pushes in the future. When I make a future commit, I'll just need to run git push. The system will understand that I want to push to the same branch with the same name on GH. From now on, this is where I want to push.
+
+The "remote:" prefix refers to activity on the remote side (not local). It's response feedback coming from GH.
+
+"[new branch]" refers to the new branch that was created on GH. The tiny arrow (->) indicates that tracking is enabled. The local branch feeds into the remote branch.
+
+Tip. Use "git branch -av" to list all of my branches and show which ones are tracking (->) a remote branch. This is useful for cleaning up my local workspace periodically.
+
+$ git branch -av
+* gmcmilla/new-readme-md                2c749fd Add a new README.md
+  master                                2c749fd [ahead 1] Add a new README.md
+  remotes/origin/HEAD                   -> origin/master
+  remotes/origin/gmcmilla/new-readme-md 2c749fd Add a new README.md
+  remotes/origin/master                 7e12b0a Initial commit of example-w1-python-cli
+  remotes/origin/psvallur-patch-1       f3ee80e Create README.md
+  remotes/origin/sfriend/myupdate       603c263 add to docs
+
+
+2. Go to the URL displayed to begin the process of opening a pull request. 
+
+https://linkedin.githubprivate.com/multiproduct/example-w1-python-cli/pull/new/gmcmilla/new-readme-md
+
+You are at the pull request creation screen, where the title matches your commit message. The title can be changed if you desire.
+
+A pull request text template, as defined by a referenced file, populates the write body. The template uses Github Flavored Markdown (GFM), which includes HTML comments.
+
+3. Click "Create pull request"
+
+￼
+
+Alternatively, you can create a draft pull request to request a last-minute sanity review from a fellow developer. It's a pre-review before the formal review begins. A draft pull request has a unique ID and can be shared with others on Slack for collaboration. Drafts cannot be merged.
+
+Look in the "Review requested" area for all of the signals about whether the code is or is not suitable for merge. The problems are listed here.
+
+￼
+
+Owner Approval means I have touched code that is managed by an ACL, and I must get an owner approval in order to merge it.
+
+Pre-merge is similar to mint validate. 
+
+Working Copy Test is similar to wc-test. 
+
+Changes to Resolution is company policy that enables non-owners to raise issues, where the author must respond or explicitly dismiss. A no response it not allowed. 
+
+Tip. git remote -v informs me that I have a remote called origin. Origin is the central source of truth. It was set up for me as part of mint clone (or mint checkout). It's using ssh to communicate with linkedin.githubprivate.com.
+
+$ git remote -v
+origin	ssh://git@linkedin.githubprivate.com/multiproducts/example-w1-python-cli.git (fetch)
+origin	ssh://git@linkedin.githubprivate.com/multiproducts/example-w1-python-cli.git (push)
+
+====================================
+
+V. Get a code review
+
+PR authors cannot approve their own pull requests; only MP owners can do it.
+
+1. Add reviewers to the PR by using the Reviewers drop down menu:
+
+￼
+
+Reviewers are email notified, or you can send the PR's URL directly:
+
+https://linkedin.githubprivate.com/multiproduct/example-w1-python-cli/pull/3
+
+Tips:
+
+o The Files changed tab describes the code changes to be approved.
+
+o Comments can be added in the gutter.
+
+
+2. On the Write tab, an approver will select Approve > Submit review:
+
+￼
+
+
+Tips. 
+
+o To update the PR with new staged changes in the review branch, use git add, git commit, and git push. Because you are already tracking the upstream branch, only a git push (with no -u) is required. Git remembers the destination.
+
+o To re-request a review from someone, click the circular refresh icon:
+
+￼
+
+
+
+====================================
+
+VI. Merge the change into the code base
+
+When Owner Approval turns green and the required checks pass (Details displays the list of ACL owners):
+
+￼
+
+click Squash and merge to merge your code into master and officially make it part of the multiproduct:
+
+￼
+
+The timeline reports the number of checks that passed before the merge was initiated:
+
+￼
+
+See also the post-merge validation (PCL) that's running on master after the merge:
+
+￼
+
+When it succeeds, it looks like this:
+
+￼
+
+If things go bad for you, click the Revert button to create a new branch and reverse (rollback) the change:
+
+￼
+
+
+Updating a PR by Amending to the Previous Commit
+The cleanest way to update files and push up the changes to the same PR is as follows:
+	1	Ensure you’re on the same branch in your local environment as the PR’s branch
+	2	Modify your files
+	3	Run git add -A in terminal
+	4	Run git commit --amend --no-edit. This will bring in your updates to your previous commit. Note that the dashes before amend and no-edit should be 2 dashes in a row.
+	5	Run git push -f
+	6	Validate your updates are reflected in the PR
+
+Updating master to latest
+Tip. Do this to get master back to the official clean copy (what everyone else sees):
+
+git checkout master
+git reset --hard origin/master
+git fetch
+git pull --rebase
+
+
+Switching to a Different Branch
+Use git checkout <branch-name> to switch between branches:
+$ git checkout master
+Switched to branch 'master'
+Your branch is behind 'origin/master' by 12 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+
+Updating .git
+Use git fetch to update your .git directory with all commit history from the remote branch that does not exist in your local repository. This command will not change any local content files:
+$ git fetch
+remote: Counting objects: 1143, done.
+remote: Compressing objects: 100% (108/108), done.
+remote: Total 1143 (delta 243), reused 259 (delta 208), pack-reused 824
+Receiving objects: 100% (1143/1143), 498.89 KiB | 6.93 MiB/s, done.
+Resolving deltas: 100% (608/608), completed with 21 local objects.
+From github.com:MicrosoftDocs/linkedin-apidocs-test
+   4b5c50c..74dc91b  master          -> origin/master
+ * [new branch]      djacob          -> origin/djacob
+ * [new branch]      ekrbranch2      -> origin/ekrbranch2
+ * [new branch]      jbotest         -> origin/jbotest
+   b89e22c..5497f2e  new-test-branch -> origin/new-test-branch
+ * [new branch]      nkamadolli      -> origin/nkamadolli
+
+
+Pull in changes from the master branch into your existing local branch
+Pull in changes from the master branch into your existing local branch after you’ve created a PR. (only needed if you want to make further changes to this PR)
+
+$ git checkout master
+$ git pull --rebase (note: DO NOT use "git pull" by itself!)
+$ git checkout <PR branch name>
+$ git pull --rebase (only needed if Freshness Guardian or others have committed to the PR branch)
+$ git merge master (only needed if other changes have been merged by others in the meantime.)
+(resolve any conflicts if needed...)
+$ git push (push to remote branch, PR gets automatically updated)
+Note: if "git push" fails saying your local branch is behind, do a "git pull --rebase" and try again. Do not do a "git pull"!
+
+
 # Access
 
 repo, https://github.com/gmcmillan100/docs
