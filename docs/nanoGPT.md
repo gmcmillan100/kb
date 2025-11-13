@@ -1,5 +1,8 @@
 ---
-sidebar_position: 1
+layout: page
+title: nanoGPT
+permalink: /nanoGPT/
+resource: true
 ---
 
 # Video transcription and nanoGPT training for Glean search
