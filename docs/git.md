@@ -64,9 +64,10 @@ Include my username in the branch name. When there are many users collaborating 
 
 2. Issue git log to confirm my commit is on the new branch (HEAD -> gmcmilla/new-readme-md, master). The "HEAD" is a "you are here" indicator on the new branch and master is here with me.
 
+```
 $ git log
 commit 2c749fd6d7279d27c324375f878ca2898272cc72 (HEAD -> gmcmilla/new-readme-md, master)
-Author: Greg McMillan <gmcmillan@linkedin.com>
+Author: Greg McMillan 
 Date:   Wed Sep 2 17:51:24 2020 -0700
 
     Add a new README.md
@@ -76,7 +77,7 @@ Tip. Do this to get master back to the official clean copy (what everyone else s
 git checkout master
 git fetch
 git reset --hard origin/master
-
+```
 
 ====================================
 
@@ -86,6 +87,7 @@ III. Make a local code change
 
 2. Display the status of my local working environment:
 
+```
 $ git status
 On branch master
 Your branch is up to date with 'origin/master'.
@@ -95,18 +97,20 @@ Untracked files:
 	README.md
 
 Nothing added to commit but untracked files present (use "git add" to track)
-
+```
 
 It tells me I have an untracked file. As far a git knows, this file has nothing to do with my project.  
 
 
 3. Add the file to the project:
 
+```
 $ git add README.md
-
+```
 
 Now I have a new file that's part of the project. Before, this file was untracked:
 
+```
 $ git status
 On branch master
 Your branch is up to date with 'origin/master'.
@@ -114,42 +118,44 @@ Your branch is up to date with 'origin/master'.
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
 	new file:   README.md
-
+```
 
 4. The file is saved to disk, but it's not part of my git history yet. So, introduce a new commit by making a new unit of code change.
 
 Currently, I'm on the master branch:
 
+```
 $ git branch
 * master
+```
 
 Create a commit:
 
+```
 $ git commit -m "Add a new README.md"
 [master 2c749fd] Add a new README.md
  1 file changed, 75 insertions(+)
  create mode 100644 README.md
+```
 
 Run git log to display the history. At 17:51, I made a code change that's described as "Add a new README.md"
 
+```
 $ git log
 commit 2c749fd6d7279d27c324375f878ca2898272cc72 (HEAD -> master)
-Author: Greg McMillan <gmcmillan@linkedin.com>
+Author: Greg McMillan 
 Date:   Wed Sep 2 17:51:24 2020 -0700
 
     Add a new README.md
 
 commit 7e12b0a6d089aeeea86a93b4eb9d52e295809e1d (tag: example-w1-python-cli_0.0.0, origin/master, origin/HEAD)
-Author: Prince S. Valluri <psvallur@linkedin.com>
+Author: Prince S. Valluri 
 Date:   Thu Aug 13 18:21:25 2020 -0700
 
     Initial commit of example-w1-python-cli
-
+```
 
 Note that my master (HEAD -> master) is ahead of GH's master (tag: example-w1-python-cli_0.0.0, origin/master, origin/HEAD). That is, the last I saw of GH's master. I'm further ahead in history.
-
-
-
 
 
 ====================================
@@ -158,6 +164,7 @@ IV. Create a pull request
 
 1. Push my branch and deliver its code to a git remote:
 
+```
 $ git push -u origin gmcmilla/new-readme-md
 Enumerating objects: 4, done.
 Counting objects: 100% (4/4), done.
@@ -175,7 +182,7 @@ remote:
 To ssh://linkedin.githubprivate.com/multiproducts/example-w1-python-cli.git
  * [new branch]      gmcmilla/new-readme-md -> gmcmilla/new-readme-md
 Branch 'gmcmilla/new-readme-md' set up to track remote branch 'gmcmilla/new-readme-md' from 'origin'.
-
+```
 
 The -u argument refers to tracking an upstream branch. My local branch tracks the copy that I pushed to GH. The -u frees me from having to be so specific about my pushes in the future. When I make a future commit, I'll just need to run git push. The system will understand that I want to push to the same branch with the same name on GH. From now on, this is where I want to push.
 
@@ -185,6 +192,7 @@ The "remote:" prefix refers to activity on the remote side (not local). It's res
 
 Tip. Use "git branch -av" to list all of my branches and show which ones are tracking (->) a remote branch. This is useful for cleaning up my local workspace periodically.
 
+```
 $ git branch -av
 * gmcmilla/new-readme-md                2c749fd Add a new README.md
   master                                2c749fd [ahead 1] Add a new README.md
@@ -193,7 +201,7 @@ $ git branch -av
   remotes/origin/master                 7e12b0a Initial commit of example-w1-python-cli
   remotes/origin/psvallur-patch-1       f3ee80e Create README.md
   remotes/origin/sfriend/myupdate       603c263 add to docs
-
+```
 
 2. Go to the URL displayed to begin the process of opening a pull request. 
 
@@ -304,22 +312,29 @@ The cleanest way to update files and push up the changes to the same PR is as fo
 Updating master to latest
 Tip. Do this to get master back to the official clean copy (what everyone else sees):
 
+```
 git checkout master
 git reset --hard origin/master
 git fetch
 git pull --rebase
+```
 
+## Switching to a Different Branch
 
-Switching to a Different Branch
-Use git checkout <branch-name> to switch between branches:
+Use ``git checkout <branch-name>`` to switch between branches:
+
+```
 $ git checkout master
 Switched to branch 'master'
 Your branch is behind 'origin/master' by 12 commits, and can be fast-forwarded.
   (use "git pull" to update your local branch)
+```
 
+## Updating .git
 
-Updating .git
 Use git fetch to update your .git directory with all commit history from the remote branch that does not exist in your local repository. This command will not change any local content files:
+
+```
 $ git fetch
 remote: Counting objects: 1143, done.
 remote: Compressing objects: 100% (108/108), done.
@@ -333,11 +348,12 @@ From github.com:MicrosoftDocs/linkedin-apidocs-test
  * [new branch]      jbotest         -> origin/jbotest
    b89e22c..5497f2e  new-test-branch -> origin/new-test-branch
  * [new branch]      nkamadolli      -> origin/nkamadolli
-
+```
 
 Pull in changes from the master branch into your existing local branch
 Pull in changes from the master branch into your existing local branch after you’ve created a PR. (only needed if you want to make further changes to this PR)
 
+```
 $ git checkout master
 $ git pull --rebase (note: DO NOT use "git pull" by itself!)
 $ git checkout <PR branch name>
@@ -346,7 +362,7 @@ $ git merge master (only needed if other changes have been merged by others in t
 (resolve any conflicts if needed...)
 $ git push (push to remote branch, PR gets automatically updated)
 Note: if "git push" fails saying your local branch is behind, do a "git pull --rebase" and try again. Do not do a "git pull"!
-
+```
 
 # Access
 

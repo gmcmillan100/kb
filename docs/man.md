@@ -5,7 +5,7 @@ sidebar_position: 1
 # man
 
 What are man pages?
-A man page (short for manual page) is a form of software documentation usually found on a Unix or Unix-like operating system. man pages usually cover library and system calls, formal standards and conventions, and even abstract concepts. To invoke a man page, type man <command_name> in your terminal. Man pages are written in Groff.  
+A man page (short for manual page) is a form of software documentation usually found on a Unix or Unix-like operating system. man pages usually cover library and system calls, formal standards and conventions, and even abstract concepts. To invoke a man page, type man ``<command_name>`` in your terminal. Man pages are written in Groff.  
 
 Groff
 Groff (also called GNU troff) is the GNU replacement for the troff and nroff text formatters. As a formatting and typesetting engine, this utility acts like a compiler for the input supplied (plain text content and formatting commands) to it and it creates a formatted document as its output.

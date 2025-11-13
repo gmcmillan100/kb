@@ -64,6 +64,7 @@ Main article: https://www.learnhowtoprogram.com/lessons/setting-up-a-project-wit
 
 Create directory and define build.gradle:
 
+```
 mkdir gradle
 cd gradle
 vi build.gradle
@@ -91,8 +92,11 @@ gradle/src/main/java/HelloWorld.java
     System.out.println( "Hello World!" );
   }
 }
+```
+
 Run Gradle job:
 
+```
 $ gradle run
 :compileJava UP-TO-DATE
 :processResources UP-TO-DATE
@@ -101,8 +105,11 @@ $ gradle run
 Hello World!
 BUILD SUCCESSFUL
 Total time: 3.532 secs
+```
+
 Inspect the build:
 
+```
 cat build/classes/main/HelloWorld.class
 ## Plugins
 Written in Groovy
@@ -110,4 +117,4 @@ Written in Groovy
 Expects to find code in specific directories (src/main/groovy/resources, test/groovy)
 
 Spock is the testing framework used to test Gradle plugins
-
+```

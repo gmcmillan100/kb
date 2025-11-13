@@ -11,6 +11,7 @@ see tutorial, http://vimeo.com/6691519
 
 try this
 
+```
 <! DOCTYPE html>
 <html>
 <body>
@@ -25,6 +26,7 @@ try this
 </svg>   
 </body>
 </html>
+```
 
 ## Click to Call
 
@@ -40,11 +42,15 @@ CSS3 includes all of CSS2. There are some changes but nothing drastic.
 
 Use strict (not transitional / loose):
 
+```
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
 "http://www.w3.org/TR/html4/strict.dtd">
+```
+
 Strict is clean.... it forces you to THINK about how best to utilize CSS and what you can actually accomplish using CSS, instead of just doing things the sloppy-coder, old-style-easy way.
 With strict, anything deprecated (condemned) or made obsolete is not allowed.
 Strict mark-up is more solidly "future-proof" but it can require some un-learning and re-learning, especially because rendering instructions are now all moved to the stylesheet, no fudging allowed.
+
 See http://www.w3.org/TR/html401/struct/global.html
 
 ## div
@@ -66,26 +72,36 @@ http://www.tizag.com/htmlT/htmldiv.php
 
 The align attribute is deprecated, but still supported in all major browsers.
 
-The align attribute of <img> is deprecated, and is not supported in HTML 4.01 Strict / XHTML 1.0 Strict DTD. Use CSS instead. There is no such property as 'align' in CSS. You are looking for the'float' property. If a browser does anything with an align property, then it's proprietary behavior that will not work across multiple browsers.
+The align attribute of ``<img>`` is deprecated, and is not supported in HTML 4.01 Strict / XHTML 1.0 Strict DTD. Use CSS instead. There is no such property as 'align' in CSS. You are looking for the'float' property. If a browser does anything with an align property, then it's proprietary behavior that will not work across multiple browsers.
 
 Given some img src= in html:
 
+```
 <img src="..." alt="..." />
+```
+
 Use CSS's "float" property to right align it:
 
+```
 img {
 float: right;
 }
+```
+
 More at http://www.w3schools.com/tags/att_img_align.asp
 
 ## Window Pop Up - A Quick Fix
 
+```
 <FORM><INPUT TYPE="button" VALUE="Get Started" onclick="window.open('http://www.linkedinfitness.com/')"></FORM>
+```
 
 ## Comments
 
 Multi line comment:
 
+```
 <!--
 html here..
 -->
+```

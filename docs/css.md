@@ -36,7 +36,9 @@ To fix it, force a vertical scrollbar on the site.
 
 Add this to the .css:
 
+```
 html {overflow:scroll; min-height:100%; margin-bottom:1px;}
+```
 http://www.communitymx.com/content/article.cfm?cid=528a0
 
 Padding vs Margin
@@ -100,17 +102,26 @@ http://monkeyflash.com/tutorials/css-image-rollover-navbar/
 
 http://www.quirksmode.org/css/background.html
 
+```
 .image {float:right; width:290px; height:375px; position:relative; top:20px; background-position:center top; background-repeat:no-repeat;}
- 
+```
+
+```
 #map.image {background-image:url('2027floor1.png')}
 #cad.image {background-image:url('cadFinite.png')}
 #layout.image {background-image:url('mvCampus.png')}
+```
+
 and here's the html:
+
+```
 <div class="image">
    <div id="map.image"></div>
    <p class="alignleft"> <a class="cad.image">CAD Diagram</a> </p>
    <p class="alignright"><a class="layout.image">Campus Layout</a> </p>
    </div>
+```
+
 6:21Stephanie Trimble came back
 Stephanie Trimble
 6:22
@@ -124,8 +135,12 @@ Greg McMillan
 6:26
 Ok thanks, will rework it some more. Yeah, I thought the (.) was maybe a shortcut to define a class inside an ID in one fell swoop. But nada
 Does the "visibility" element come into play also with the image swaping/hiding?
+
+```
 {visibility:hidden;}
 {visibility:visible;}
+```
+
 Stephanie Trimble
 6:28
 Actually, you'll want to do display:none and display:block instead of visibility:hidden and visibility:visible...
@@ -156,10 +171,14 @@ then I tried this, http://www.planetoftunes.com/web_site/css/css_examples/contro
 Using JS to Hide and Show DIVs
 JS:
 
+```
 function HideDIV(d) { document.getElementById(d).style.display = "none"; }
 function DisplayDIV(d) { document.getElementById(d).style.display = "block"; }
+```
+
 HTML:
 
+```
 <div id="swap1" style="background-image:url('cadFinite.png')">
     </div>
  
@@ -170,6 +189,8 @@ HTML:
     <p onmouseover="HideDIV('swap0');DisplayDIV('swap1')" onmouseout="HideDIV('swap1');DisplayDIV('swap0')" class="alignleft"> <a>CAD Diagram</a> </p>
     <p onmouseover="HideDIV('swap0');DisplayDIV('swap2')" onmouseout="HideDIV('swap2');DisplayDIV('swap0')" class="alignright"> <a>Campus Layout</a> </p>
     </div>
+```
+
 http://www.willmaster.com/library/features/mouseover_div_swap.php
 
 ## beacon
@@ -186,6 +207,7 @@ In the CSS, position the map image itself as relative. But position the box itse
 
 The CSS3:
 
+```
 @-webkit-keyframes glow {
     0% {padding: 0;}
     50% {padding: 20px; background-color:rgba(254,115,40,0.2); -webkit-border-radius:25px; top:280px; left:50px;}
@@ -202,6 +224,8 @@ The CSS3:
     -webkit-border-radius:4px;
     -moz-border-radius:4px;
     z-index:10;}
+```
+
 The webkit-animation-name and webkit-keyframes must both be set to glow
 The beacon is referenced inside a containing DIV ID named swap0 that has position:relative
 The actual beacon ID itself has position:absolute
@@ -211,26 +235,41 @@ The keyframes percentage settings refer to the animation-duration that is set to
 To position the beacon, use the keyframe's top:px and left:px settings.
 The HTML:
 
+```
 <div id="swap0">
     <div id="beacon"></div>
     </div>
+```
 
 ## DIV IDs vs Classes
 
 DIV – A unique ID found only once in an html file:
+
 In html:
 
+```
 <div id="box1">
+```
+
 In CSS:
 
+```
 #box1
+```
+
 Class – A variable that is used multiple times in an html file:
 In html:
 
+```
 <div class="bold">
+```
+
 In CSS:
 
+```
 .bold
+```
+
 A DIV takes priority over a Class.
 
 http://css-tricks.com/the-difference-between-id-and-class/ http://creativebits.org/webdev/div_id_vs_div_class

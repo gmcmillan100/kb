@@ -466,6 +466,7 @@ Note: The first connection attempt failed because "testuser" didn't have enough 
 
 Donaldo had to grant this via:
 
+```
 iwww-test.corp:gmcmilla[591] ~ $ mysql -uroot -e 'GRANT SELECT ON confluence_3_5_7.* TO "testuser"@"iwww-test.corp" IDENTIFIED BY "resutset";'
 at which point, the correct password was set and DBvisualizer could connect:
 
@@ -476,6 +477,7 @@ iwww-test.corp:gmcmilla[590] ~ $ mysql -uroot -e 'show grants for "testuser"@"lo
 | GRANT USAGE ON *.* TO 'testuser'@'localhost' IDENTIFIED BY PASSWORD '*582B2A37B5C55612EC66660570F8397BDA8F7600' |
 | GRANT SELECT ON `confluence_3_5_7`.* TO 'testuser'@'localhost'                                                  |
 +-----------------------------------------------------------------------------------------------------------------+
+```
 Tip. After the "confluence_3_5_13" db was added, the testuser account stopped working. DBvisializer could not connect. The resolution was to reissue the password via the above steps.
 
 6. Open a local shell and confirm netstat displays an ESTABLISHED connection:
@@ -500,6 +502,7 @@ Server version: 5.0.18-standard-log
 
 Type 'help;' or '\h' for help. Type '\c' to clear the buffer.
 
+```
 mysql>
 Access Confluence's MySQL Monitor
 iwww-test.corp:gmcmilla[561] ~ $ mysql -u root -e confluence_3_5_7
@@ -561,7 +564,9 @@ select ``*``, datediff(started_at, created_at) from assignments
 where created_at between '2021-02-01' and '2021-03-31';
 
 SELECT VERSION();
-MySQL Workbench
+```
+
+## MySQL Workbench
 Use for DB design and modeling
 
 http://dev.mysql.com/downloads/workbench/5.2.html

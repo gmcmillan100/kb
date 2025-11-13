@@ -44,6 +44,7 @@ Follow this http://stackoverflow.com/questions/2451671/how-to-install-eclipse-ph
 Installed Version: 5.2.6
 Issue the "php -v" command:
 
+```
 playpen-gm.corp:gmcmilla[574] ~/workplace/php $ php -v
 PHP Warning:  Module 'ctype' already loaded in Unknown on line 0
 PHP Warning:  Module 'dom' already loaded in Unknown on line 0
@@ -52,8 +53,11 @@ Copyright (c) 1997-2008 The PHP Group
 Zend Engine v2.2.0, Copyright (c) 1998-2008 Zend Technologies
     with Zend Extension Manager v1.2.2, Copyright (c) 2003-2007, by Zend Technologies
     with Zend Optimizer v3.3.3, Copyright (c) 1998-2007, by Zend Technologies
+```
+
 or view this file via a browser:
 
+```
 vi ver.php
 <?php phpinfo(); ?>
 http://playpen-gm.corp.linkedin.com/ver.php
@@ -66,6 +70,8 @@ Display startup configuration information, including the path to php.ini:
 phpinfo()
  
 ?>
+```
+
 ## Extensions
 Many extensions (eg, json) are built into PHP, but are not enabled until they are explicitly referenced in the php.ini file.
 
@@ -90,9 +96,13 @@ ls -al
 Make changes then restart Apache
 
 ## PHP CLI
-Use "php -f <filename>" to test a script from the command line:
 
+Use ``php -f <filename>`` to test a script from the command line:
+
+```
 php -f test.php
+```
+
 ## Notes from ShopIn Handoff
 mysql -u root;
 use ShopIn
@@ -122,6 +132,8 @@ http://www.plus2net.com/sql_tutorial/mysql_field_name.php
 http://www.phpsuperblog.com/php/display-all-field-column-names-of-a-table-in-mysql-database/
 
 ## DB Connection
+
+```
 <?php
 // set database server access variables
 $host = "localhost";
@@ -136,6 +148,8 @@ $connection = mysql_connect($host, $user, $pass) or die ("Unable to connect!");
 mysql_select_db($db) or die ("Unable to select database!");
  
 ?>
+```
+
 Logins
 http://www.phpeasystep.com/phptu/6.html
 

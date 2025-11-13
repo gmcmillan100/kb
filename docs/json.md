@@ -9,8 +9,12 @@ JavaScript Object Notation (JSON) is a lightweight text-based open standard desi
 
 A json formatted text string looks contains brackets, colons, and curly braces:
 
+```
 [{"contenttype":"BLOGPOST","count(*)":"2076"},{"contenttype":"COMMENT","count(*)":"2054"},{"contenttype":"MAIL","count(*)":"29448"},{"contenttype":"PAGE","count(*)":"33819"}]
-PHP
+```
+
+## PHP
+
 PHP 5.2 and higher includes the json_encode() and json_decode() functions built right in.
 
 However when enabled in php and tested with "php -f scriptname.php":
@@ -23,12 +27,20 @@ Turns out the json extension needed to be enabled in php.ini
 
 Vi php.ini here:
 
+```
 cd /export/ctools/etc/php5/
 sudo vim php.ini
+```
+
 Then in the php.ini file, add the extension:
 
+```
 extension="json.so"
+```
+
 Restart the Apache server:
 
+```
 sudo /export/ctools/bin/apachectl stop
 sudo /export/ctools/bin/apachectl start
+```

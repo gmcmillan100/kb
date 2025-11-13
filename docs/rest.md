@@ -49,8 +49,10 @@ Run the tests at Wiki Upgrade Testing Checklist for Docs
 Follow this https://developer.linkedin.com/documents/quick-start-guide#toggleview:id=python
 
 Quick Script
+
 Create script:
 
+```
 #!/usr/bin/python
 import oauth2 as oauth
 import httplib2
@@ -80,8 +82,11 @@ client = oauth.Client(consumer, access_token)
 # By default, the LinkedIn API responses are in XML format. If you prefer JSON, simply specify the format in your call
 resp,content = client.request("http://api.linkedin.com/v1/people/~?format=json", "GET", "")
 print resp,content
+```
+
 Run it:
 
+```
 gmcmilla-mn:restli gmcmilla$ ./apicall.py
 {'status': '200', 'content-length': '251', 'content-location': u'http://api.linkedin.com/v1/people/~?oauth_body_hash=2jmj7l5rSw0yVb%2FvlWAYkK%2FYBwk%3D&amp;oauth_nonce=31740385&amp;oauth_timestamp=1400281114&amp;oauth_consumer_key=75xa6oiszuh4jt&amp;format=json&amp;oauth_signature_method=HMAC-SHA1&amp;oauth_version=1.0&amp;oauth_token=bccad401-4bb4-47d7-8c0c-68c436996048&amp;oauth_signature=XVtZyhAbyCRkPgE2wALgKrNzy30%3D', 'x-li-pop': 'PROD-ELA4', 'transfer-encoding': 'chunked', 'set-cookie': 'lidc="b=LB02:g=53:u=66:i=1400280226:t=1400364634:s=3682054480"; Expires=Sat, 17 May 2014 22:10:34 GMT; domain=.linkedin.com; Path=/', 'vary': '*', 'x-li-uuid': 'XQ2tiYjBgGryUnDfSZh0Fg==', 'server': 'Apache-Coyote/1.1', 'x-li-fabric': 'PROD-ELA4', 'connection': 'keep-alive', '-content-encoding': 'gzip', 'date': 'Fri, 16 May 2014 22:58:34 GMT', 'x-li-request-id': 'Q0P4XDKUEY', 'x-li-format': 'json', 'content-type': 'application/json;charset=UTF-8'} {
   "firstName": "Greg",
@@ -89,6 +94,8 @@ gmcmilla-mn:restli gmcmilla$ ./apicall.py
   "lastName": "McMillan",
   "siteStandardProfileRequest": {"url": "http://www.linkedin.com/profile/view?id=4721002&amp;authType=name&amp;authToken=e9fN&amp;trk=api*a3792451*s3862291*"}
 }
+```
+
 Get my LinkedIn ID:
 
 resp,content = client.request("http://api.linkedin.com/v1/people/~:(id)?format=json", "GET", "")
@@ -106,6 +113,7 @@ resp,content = client.request("http://api.linkedin.com/v1/people/~/group-members
 Python Interpreter
 Import modules, set script, retrieve my own LinkedIn profile using the Profile API, print the response:
 
+```
 gmcmilla-mn:restli gmcmilla$ python
 Python 2.7.2 (default, Oct 11 2012, 20:14:37)
 [GCC 4.2.1 Compatible Apple Clang 4.0 (tags/Apple/clang-418.0.60)] on darwin
@@ -192,8 +200,10 @@ ImportError: No module named simplejson
     <url>http://www.linkedin.com/profile/view?id=4721002&amp;authType=name&amp;authToken=e9fN&amp;trk=api*a3792451*s3862291*</url>
   </site-standard-profile-request>
 </person>
+```
 Now get my profile in JSON format:
 
+```
 >>> resp,content = client.request("http://api.linkedin.com/v1/people/~?format=json", "GET", "")
 >>> print resp,content
 {'status': '200', 'content-length': '251', 'content-location': u'http://api.linkedin.com/v1/people/~?oauth_body_hash=2jmj7l5rSw0yVb%2FvlWAYkK%2FYBwk%3D&amp;oauth_nonce=14378307&amp;oauth_timestamp=1400279364&amp;oauth_consumer_key=75xa6oiszuh4jt&amp;format=json&amp;oauth_signature_method=HMAC-SHA1&amp;oauth_version=1.0&amp;oauth_token=bccad401-4bb4-47d7-8c0c-68c436996048&amp;oauth_signature=4MoAF7L6FAtHjYbSP5qE4P9QHRU%3D', 'x-li-pop': 'PROD-ELA4', 'transfer-encoding': 'chunked', 'set-cookie': 'lidc="b=LB02:g=53:u=66:i=1400278234:t=1400364634:s=664249250"; Expires=Sat, 17 May 2014 22:10:34 GMT; domain=.linkedin.com; Path=/', 'vary': '*', 'x-li-uuid': '/nEGXyI8KIG1qY19TpYigQ==', 'server': 'Apache-Coyote/1.1', 'x-li-fabric': 'PROD-ELA4', 'connection': 'keep-alive', '-content-encoding': 'gzip', 'date': 'Fri, 16 May 2014 22:29:24 GMT', 'x-li-request-id': 'A5BBSQAYXG', 'x-li-format': 'json', 'content-type': 'application/json;charset=UTF-8'} {
@@ -202,7 +212,7 @@ Now get my profile in JSON format:
   "lastName": "McMillan",
   "siteStandardProfileRequest": {"url": "http://www.linkedin.com/profile/view?id=4721002&amp;authType=name&amp;authToken=e9fN&amp;trk=api*a3792451*s3862291*"}
 }
-
+```
 
 App API Key and OAuth:
 
@@ -232,9 +242,13 @@ http://employees.org/~mcmillan/index.htm?error=unsupported_response_type&error_d
 
 # Basic HTTP Request and Response
 
+```
 curl -v HTTP
-Use curl -v to see the Requests (>) and Responses (<):
 
+Use curl -v to see the Requests (>) and Responses (<):
+```
+
+```
 gmcmilla-mn:restli gmcmilla$ curl -v http://www.linkedin.com/pub/greg-mcmillan/1/6b8/8a
 * About to connect() to www.linkedin.com port 80 (#0)
 *   Trying 216.52.242.80...
@@ -283,8 +297,9 @@ gmcmilla-mn:restli gmcmilla$ curl -v http://www.linkedin.com/pub/greg-mcmillan/1
  <!--[if gt IE 9]> <html lang="en" class="os-win"> <![endif]-->
  <!--[if !IE]><!--> <html lang="en" class="os-win"> <!--<![endif]-->
 <head>
-...
-Methods
+```
+
+## Methods
 
 The HTTP specification provides a number of generic methods, but only five are most relevant to REST:
 

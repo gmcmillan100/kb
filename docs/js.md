@@ -121,6 +121,7 @@ console.log("before if statement");
 
 Example:
 
+```
 <script type="text/javascript">
   
 AJS.$("#customfield_12293\\:1").change(function() {
@@ -158,6 +159,7 @@ console.log("before if statement");
  
   
 </script>
+```
 
 ## Resources
 Per webdev Florence Davis:
@@ -186,6 +188,8 @@ Newbie video tutorials:
 http://www.impressivewebs.com/jquery-tutorial-for-beginners/
 http://blog.themeforest.net/tutorials/jquery-for-absolute-beginners-video-series/
 Minimum
+
+```
 <script type="text/javascript" >
  
 $(document).ready(function() {
@@ -193,6 +197,8 @@ $(document).ready(function() {
  
 });
 </script>
+```
+
 Tabs
 http://www.ilovecolors.com.ar/jquery-tabs/
 
@@ -254,6 +260,7 @@ Much more complicated that it sounds. See http://www.elated.com/articles/rollove
 
 Put this in head:
 
+```
 <script type="text/javascript">
  
 eg_on = new Image ( );
@@ -281,23 +288,35 @@ function button_off ( imgId )
 }
  
 </script>
+```
+
+```
 <a href="javascript: void(0)"
 onclick="window.open('http://www.linkedinfitness.com/','windowname1');"
 onmouseout="button_off('eg'); return true"
 onmouseover="button_on('eg'); return true">
 <img src="art/eg_off.png" align="right" style="width: 107px; height: 24px; border: none;" alt="Button" id="eg"/>
 </a>
-New Window Open
+```
+
+## New Window Open
+
 To open a new window on mouse click:
 
+```
 href="javascript: void(0)"
 onclick="window.open('http://www.linkedinfitness.com/','windowname1');"
+```
+
 js in External Files
 http://www.webreference.com/programming/javascript/external/
 
 Set this script line in the HTML head:
 
+```
 <script type="text/javascript" src="file.js"></script>
+```
+
 Progress Bar
 http://t.wits.sg/jquery-progress-bar/
 
@@ -330,6 +349,7 @@ HTML. The javascript in "script.js" is dumping data into the ids progress1, prog
     </div>
 Jquery hides the "example" div class on page load. When "id-foo" is clicked, show the example class:
 
+```
 <script type="text/javascript">
  
  
@@ -341,8 +361,11 @@ $(document).ready(function(){
         });
 });
 </script>
+```
+
 Reference these js and css file in the html header:
 
+```
 <html>
 <head>
 <link href="cssprogressbar/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css"/>
@@ -352,6 +375,8 @@ Reference these js and css file in the html header:
 <script type="text/javascript" src="jsprogressbar/script.js"></script>
 </head>
 </html>
+```
+
 script.js is the primary jQuery control script.
 
 Safari jQuery Page Refresh Issues
@@ -361,14 +386,20 @@ http://www.quackit.com/javascript/javascript_refresh_page.cfm
 
 In my case, Safari did not load the js (a highcharts instance) that was sent to a specific div (#container), when that div id was reloaded in the page (maincontent.php):
 
+```
 function reloadpage(){
         $('#container').load("maincontent.php");
 }
+```
+
 The workaround was to not use jquery. Instead just code it in raw javascript like this:
 
+```
 function reloadpage(){
         setTimeout("location.reload(true);");
 }
+```
+
 Learning
 Watch JS bootcamp, 
 
